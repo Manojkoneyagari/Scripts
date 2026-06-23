@@ -19,6 +19,11 @@ if [ ! -d $log_direc ]; then
     cd $log_direc
     Files=$(find . -type f -name '*.log' -mtime "+$days")
 
+    #find . -type f -name '*.log' -mtime "+$days"  - only log files
+    #find . -type f -name '*.log' -o -name '*.txt' -mtime "+$days"  --- log and txt files
+    #find "$log_direc" -type d -mtime "+$days"   - find directories
+    #find "$log_direc" -mtime "+$days"  - find both files and directories
+    # find . -type f -mtime +14  - find all files
 fi
 
 if [ ! -d $des_direc ]; then
