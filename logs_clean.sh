@@ -22,22 +22,41 @@ fi
 
 
 Files=$(find "$log_direc" -type f -name '*.log' -mtime "+$days")
+#Directories=$(find "$log_direc" -type d -mtime "+$days")
 
-Directories=$(find "$log_direc" -type d -mtime "+$days")
+if [ -z $Files ]; then
+    echo " We don't have files older than $days"
+    exit 0
+fi
 
-echo -e "Printing the $days days older files and directories \n"
+#if [ -z $Directories ]; then
+    #echo " We don't have directories older than $days"
+   # exit 1
+#fi
+tar -czvf $des_direc/archival.tar.gz $log_dire
 
-while read line
+if [ $? -eq 0 ]; then
+
+echo -e "Printing the $days days older files \n"
+while IFS= read -r line
 do
     echo -e "$line \n"
-
 done <<< "$Files"
 
-while read -r direc
-do
-    echo -e "$direc \n"
 
-done <<< "$Directories"
+echo -e "Deleting the logs older than $days in $log_direc \n"
+while IFS= read -r line
+do
+    rm -f $line
+    echo "deleted file: $line"
+done <<< "$Files"
+
+# echo -e "Printing the $days days older directories \n"
+#while read -r direc
+#do
+   # echo -e "$direc \n"
+
+#done <<< "$Directories" 
 
 
 
