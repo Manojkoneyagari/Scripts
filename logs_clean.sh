@@ -51,6 +51,8 @@ do
     echo "deleted file: $line"
 done <<< "$Files"
 
+fi
+
 # echo -e "Printing the $days days older directories \n"
 #while read -r direc
 #do
