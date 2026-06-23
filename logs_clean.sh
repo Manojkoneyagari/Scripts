@@ -47,7 +47,7 @@ done <<< "$Files"
 echo -e "Deleting the logs older than $days in $log_direc \n"
 while IFS= read -r line
 do
-    rm -f $line
+   # rm -f $line
     echo "deleted file: $line"
 done <<< "$Files"
 
