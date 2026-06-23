@@ -40,7 +40,7 @@ fi
 #fi
 
 echo "Archiving the files"
-tar -czvf "$des_direc/archival_${Timestamp}.tar.gz" "$Files"
+tar -czvf "$des_direc/archival_$Timestamp.tar.gz" $Files
 
 if [ $? -eq 0 ]; then
 
