@@ -3,7 +3,7 @@
 log_direc=$1
 des_direc=$2
 days=${3:-5}
-Timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+Timestamp=$(date '+%Y-%m-%d-%H:%M:%S')
 
 
 if [ -z $log_direc ] || [ -z $des_direc ]; then
@@ -39,8 +39,8 @@ fi
    # exit 1
 #fi
 
-
-tar -czvf "$des_direc/archival_$Timestamp.tar.gz" $Files
+echo "Archiving the files"
+tar -czvf "$des_direc/archival_${Timestamp}.tar.gz" "$Files"
 
 if [ $? -eq 0 ]; then
 
