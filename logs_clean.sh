@@ -3,6 +3,8 @@
 log_direc=$1
 des_direc=$2
 days=${3:-5}
+Timestamp=$(date '+%D %H:%M:%S')
+
 
 if [ -z $log_direc ] || [ -z $des_direc ]; then
     echo "Please provide the directory path and days"
@@ -36,7 +38,9 @@ fi
     #echo " We don't have directories older than $days"
    # exit 1
 #fi
-tar -czvf "$des_direc/archival.tar.gz" $Files
+
+
+tar -czvf "$des_direc/archival_$Timestamp.tar.gz" $Files
 
 if [ $? -eq 0 ]; then
 
