@@ -32,7 +32,7 @@ fi
     #echo " We don't have directories older than $days"
    # exit 1
 #fi
-tar -czvf "$des_direc/archival.tar.gz" $log_dire
+tar -czvf "$des_direc/archival.tar.gz" $log_direc
 
 if [ $? -eq 0 ]; then
 
