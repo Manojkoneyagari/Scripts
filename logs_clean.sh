@@ -7,14 +7,17 @@ days=${3:-14}
 if [ -z $log_direc ] || [ -z $des_direc ]; then
     echo "Please provide the directory path and days"
     echo "usage $0 [source_dir] [dest_dir] [default_days]"
+    exit 1
 fi
 
 if [ ! -d $log_direc ]; then
     echo " $log_dire doesn't exists"
+    exit 1
 fi
 
 if [ ! -d $des_direc ]; then
     echo " $des_direc doesn't exists"
+    exit 1
 fi
 
 
