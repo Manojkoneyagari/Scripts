@@ -39,24 +39,21 @@ fi
    # exit 1
 #fi
 
-echo "Archiving the files"
+echo "Archiving the $days days older files into $des_direc directory "
 tar -czvf "$des_direc/archival_$Timestamp.tar.gz" $Files
 
 if [ $? -eq 0 ]; then
 
-echo -e "Printing the $days days older files \n"
-while IFS= read -r line
-do
-    echo -e "$line \n"
-done <<< "$Files"
-
-
 echo -e "Deleting the logs older than $days days in $log_direc \n"
 while IFS= read -r line
 do
-   # rm -f $line
+    rm -f $line
     echo "deleted file: $line"
 done <<< "$Files"
+
+else
+ echo "Archival failed"
+ exit 1
 
 fi
 
