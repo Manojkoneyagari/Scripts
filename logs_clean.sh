@@ -13,6 +13,10 @@ fi
 if [ ! -d $log_direc ]; then
     echo " $log_dire doesn't exists"
     exit 1
+    else
+    cd $log_direc
+    Files=$(find . -type f -name '*.log' -mtime "+$days")
+
 fi
 
 if [ ! -d $des_direc ]; then
@@ -20,7 +24,7 @@ if [ ! -d $des_direc ]; then
     exit 1
 fi
 
-Files=$(find "$log_direc" -type f -name '*.log' -mtime "+$days")
+
 #Directories=$(find "$log_direc" -type d -mtime "+$days")
 
 if [ -z "$Files" ]; then
@@ -32,7 +36,7 @@ fi
     #echo " We don't have directories older than $days"
    # exit 1
 #fi
-tar -czvf "$des_direc/archival.tar.gz" $log_direc
+tar -czvf "$des_direc/archival.tar.gz" $Files
 
 if [ $? -eq 0 ]; then
 
@@ -43,7 +47,7 @@ do
 done <<< "$Files"
 
 
-echo -e "Deleting the logs older than $days in $log_direc \n"
+echo -e "Deleting the logs older than $days days in $log_direc \n"
 while IFS= read -r line
 do
    # rm -f $line
