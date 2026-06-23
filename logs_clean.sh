@@ -27,7 +27,7 @@ Directories=$(find "$log_direc" -type d -mtime "+$days")
 
 echo -e "Printing the $days days older files and directories \n"
 
-while read -r line
+while read line
 do
     echo -e "$line \n"
 
