@@ -70,4 +70,8 @@ fi
 #done <<< "$Directories" 
 
 
+#Notes:
+#tar -xzvf archival_2026-06-23-06-44-47.tar.gz | sed 's|^\./||'   archiving formart using sed as it storing file as ./fonne.log
+#using sed we are replacing ./ with empty space, since it has './'' slashes, we are using different delimiter '|' instead of '/'
+
 
