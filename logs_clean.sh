@@ -20,11 +20,10 @@ if [ ! -d $des_direc ]; then
     exit 1
 fi
 
-
 Files=$(find "$log_direc" -type f -name '*.log' -mtime "+$days")
 #Directories=$(find "$log_direc" -type d -mtime "+$days")
 
-if [ -z $Files ]; then
+if [ -z "$Files" ]; then
     echo " We don't have files older than $days"
     exit 0
 fi
