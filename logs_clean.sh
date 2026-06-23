@@ -21,9 +21,9 @@ if [ ! -d $des_direc ]; then
 fi
 
 
-Files=$(find "$log_direc" -type f -name '*.log' -mtime '+$days')
+Files=$(find "$log_direc" -type f -name '*.log' -mtime "+$days")
 
-Directories=$(find "$log_direc" -type d -mtime '+$days')
+Directories=$(find "$log_direc" -type d -mtime "+$days")
 
 echo -e "Printing the $days days older files and directories \n"
 
