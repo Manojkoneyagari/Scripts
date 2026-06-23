@@ -2,7 +2,7 @@
 
 log_direc=$1
 des_direc=$2
-days=${3:-14}
+days=${3:-5}
 
 if [ -z $log_direc ] || [ -z $des_direc ]; then
     echo "Please provide the directory path and days"
@@ -21,17 +21,23 @@ if [ ! -d $des_direc ]; then
 fi
 
 
-Files=$(find "$log_direc" -type f -name '*.log' -mtime +$days)
+Files=$(find "$log_direc" -type f -name '*.log' -mtime '+$days')
 
-Directories=$(find "$log_direc" -type d -mtime +$days)
+Directories=$(find "$log_direc" -type d -mtime '+$days')
 
-echo " Printing the $days days older files and directories \n"
+echo -e "Printing the $days days older files and directories \n"
 
 while read -r line
 do
-    echo "$line \n"
+    echo -e "$line \n"
 
 done <<< "$Files"
+
+while read -r direc
+do
+    echo -e "$direc \n"
+
+done <<< "$Directories"
 
 
 
