@@ -3,7 +3,7 @@
 log_direc=$1
 des_direc=$2
 days=${3:-5}
-Timestamp=$(date '+%Y-%m-%d-%H:%M:%S')
+Timestamp=$(date '+%Y-%m-%d-%H-%M-%S')
 
 
 if [ -z $log_direc ] || [ -z $des_direc ]; then
